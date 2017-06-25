@@ -15,7 +15,7 @@ class MealsController extends Controller
     public function index()
     {
     //Gets everything in the meals table and assigns that to the allMeals variable
-        return view('home', ['allMeals' => meals::all()]);
+        return view('allmeal', ['allMeals' => meals::all()]);
     }
 
     /**
@@ -25,6 +25,7 @@ class MealsController extends Controller
      */
     public function create()
     {
+//        Returns the create.blade.php in the views folder
         return view('create');
     }
 
@@ -39,7 +40,7 @@ class MealsController extends Controller
     //Instantiate the model Meals
         $newPost = new Meals();
     //Get the value of the input with the name attribute = 'name" and save it to the database
-        $newPost ->name = $request->get('name');
+        $newPost ->name = $request->get('foobar');
         $newPost ->save();
     }
 
@@ -62,7 +63,7 @@ class MealsController extends Controller
      */
     public function edit(Meals $meals)
     {
-        //
+        return view('edit', ['mealId' => meals::all()]);
     }
 
     /**
@@ -74,7 +75,12 @@ class MealsController extends Controller
      */
     public function update(Request $request, Meals $meals)
     {
-        //
+        $thisMeal       = meals::find( $meals );
+        $thisMeal->name = $request->get( 'name' );
+        $thisMeal->save();
+
+//        return redirect( route( 'peanutbutters.edit',
+//            [ 'id' => $meals, 'saved' => true ] ) );
     }
 
     /**

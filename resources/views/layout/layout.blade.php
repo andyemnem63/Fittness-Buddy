@@ -15,7 +15,15 @@
 
 </head>
 <body>
-    {{--Dumps contents from views--}}
+{{--NavBar--}}
+<nav class="navbar navbar-inverse" role="navigation">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="/">Home</a>
+        <a class="navbar-brand" href="/Meals/create">Add Meals</a>
+        <a class="navbar-brand" href="/Meals">All Meals</a>
+    </div>
+</nav>
+{{--Dumps contents from views--}}
     @yield('content')
 </body>
 </html>

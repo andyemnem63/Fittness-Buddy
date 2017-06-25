@@ -17,3 +17,7 @@ Route::get('/', function () {
 
 //Create All Our Routes | Model , Controller
 Route::resource('Meals', 'MealsController');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
