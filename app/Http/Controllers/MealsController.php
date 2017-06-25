@@ -15,7 +15,7 @@ class MealsController extends Controller
     public function index()
     {
     //Gets everything in the meals table and assigns that to the allMeals variable
-        return view('allmeal', ['allMeals' => meals::all()]);
+        return view('index', ['allMeals' => meals::all()]);
     }
 
     /**
@@ -25,7 +25,7 @@ class MealsController extends Controller
      */
     public function create()
     {
-//        Returns the create.blade.php in the views folder
+    //Returns the create.blade.php in the views folder
         return view('create');
     }
 
@@ -40,54 +40,53 @@ class MealsController extends Controller
     //Instantiate the model Meals
         $newPost = new Meals();
     //Get the value of the input with the name attribute = 'name" and save it to the database
-        $newPost ->name = $request->get('foobar');
+    //get() first argument is the input name
+        $newPost ->name = $request->get('inputName');
         $newPost ->save();
+
+    //Redirects to controller method within the Meals controller
+        return redirect(route('Meals.show'));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Meals  $meals
-     * @return \Illuminate\Http\Response
      */
-    public function show(Meals $meals)
+    public function show(Meals $id)
     {
-        //
+        $meals = meals::find($id);
+
+        return view('Meals.show', ['allMeals' => $meals]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Meals  $meals
-     * @return \Illuminate\Http\Response
      */
-    public function edit(Meals $meals)
+    public function edit(Meals $id)
     {
-        return view('edit', ['mealId' => meals::all()]);
+        //find Id
+         $findId = meals::find($id);
+        return view('edit', ['allMeals' => $findId]);
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Meals  $meals
-     * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Meals $meals)
+    public function update(Request $request, Meals $id)
     {
-        $thisMeal       = meals::find( $meals );
-        $thisMeal->name = $request->get( 'name' );
+    //Look for the id in the database
+        $thisMeal       = meals::find($id);
+    //Get the value of the name in the edit.blade.php page
+        $thisMeal->name = $request->get('name');
         $thisMeal->save();
 
-//        return redirect( route( 'peanutbutters.edit',
-//            [ 'id' => $meals, 'saved' => true ] ) );
+        return redirect( route( 'Meals.index') );
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Meals  $meals
-     * @return \Illuminate\Http\Response
      */
     public function destroy(Meals $meals)
     {
