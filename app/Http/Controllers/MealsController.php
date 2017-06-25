@@ -56,7 +56,7 @@ class MealsController extends Controller
     {
         $meals = meals::find($id);
 
-        return view('Meals.show', ['allMeals' => $meals]);
+        return view('Meals.index', ['allMeals' => $meals]);
     }
 
     /**
