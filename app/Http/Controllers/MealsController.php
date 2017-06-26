@@ -16,8 +16,10 @@ class MealsController extends Controller
      */
     public function index()
     {
-    //Gets everything in the meals table and assigns that to the allMeals variable
-        return view('index', ['allMeals' => meals::all()]);
+        $allMeals = meals::all();
+        $userId = Auth::id();
+    //Gets everything in the meals table and assigns that to the allMeals key
+        return view('index', ['allMeals' => $allMeals])->with([ "userId" => $userId]);
     }
 
     /**
