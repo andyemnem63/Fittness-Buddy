@@ -1,16 +1,26 @@
 @extends('layout.layout')
 
-{{--{{$allMeals}}--}}
 @section('content')
-    {{--Loop Through All meals and display the name--}}
-    <h1>Show</h1>
-    @foreach($allMeals as $meal)
-        <ul class="list-group">
-            <li class="list-group-item">
-                <a href="{{route('Meals.edit', [$meal->id])}}">{{$meal->name}}</a>
-            </li>
-        </ul>
-        <br>
-    @endforeach
 
+    {{$mealId}}
+    <form action="" method="post" role="form">
+        <div class="form-group">
+            {{--Food_name--}}
+            <label for="">Food name</label>
+            <input type="text" class="form-control" name="" id="">
+            {{--Protein--}}
+            <label for="">Protein</label>
+            <input type="text" class="form-control" name="" id="">
+            {{--Carbs--}}
+            <label for="">Carbohydrate</label>
+            <input type="text" class="form-control" name="" id="">
+            {{--Fat--}}
+            <label for="">Fat</label>
+            <input type="text" class="form-control" name="" id="">
+        </div>
+
+
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
 @endsection

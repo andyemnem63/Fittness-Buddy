@@ -7,7 +7,8 @@
     @foreach($allMeals as $meal)
         <ul class="list-group">
             <li class="list-group-item">
-                <a href="{{route('Meals.edit', [$meal->id])}}">{{$meal->name}}</a>
+                <a href="{{route('Meals.show', ['id' => $meal->id])}}">{{$meal->name}}</a>
+                {{$meal->id }}
             </li>
         </ul>
         <br>

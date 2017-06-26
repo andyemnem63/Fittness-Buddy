@@ -6,7 +6,7 @@
         <legend>Create Meal</legend>
         <div class="form-group">
             <label for="">Create Meal</label>
-            <input type="text" class="form-control" name="inputName">
+            <input type="text" class="form-control" name="name">
             {{csrf_field()}}
             <br>
             <button type="submit btn btn-success" class="btn btn-primary">Submit</button>

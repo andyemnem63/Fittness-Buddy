@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
+use App\User;
 use App\Meals;
 use Illuminate\Http\Request;
 
@@ -38,25 +40,29 @@ class MealsController extends Controller
     public function store(Request $request)
     {
     //Instantiate the model Meals
+        $userId = Auth::id();
         $newPost = new Meals();
     //Get the value of the input with the name attribute = 'name" and save it to the database
     //get() first argument is the input name
-        $newPost ->name = $request->get('inputName');
+        $newPost ->name = $request->get('name');
+        $newPost ->user_id = $userId;
         $newPost ->save();
 
     //Redirects to controller method within the Meals controller
-        return redirect(route('Meals.show'));
+        return redirect(route('Meals.index'));
     }
 
     /**
      * Display the specified resource.
      *
      */
-    public function show(Meals $id)
+    public function show($id)
     {
-        $meals = meals::find($id);
-
-        return view('Meals.index', ['allMeals' => $meals]);
+        $user = user::find($id);
+        return $user;
+        //find Id
+        $findId = meals::find($id);
+        return view('show', ['mealId' => $id ]);
     }
 
     /**
@@ -65,9 +71,7 @@ class MealsController extends Controller
      */
     public function edit(Meals $id)
     {
-        //find Id
-         $findId = meals::find($id);
-        return view('edit', ['allMeals' => $findId]);
+
     }
 
     /**
