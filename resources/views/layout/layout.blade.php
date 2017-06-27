@@ -21,7 +21,7 @@
 {{--NavBar--}}
 <nav class="navbar navbar-inverse" role="navigation">
     <div class="navbar-header">
-        <a class="navbar-brand" href="/">Home</a>
+        <a class="navbar-brand" href="/home">Home</a>
         <a class="navbar-brand" href="/Meals/create">Add Meals</a>
         <a class="navbar-brand" href="/Meals">All Meals</a>
     </div>
