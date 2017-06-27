@@ -60,10 +60,6 @@ class MealsController extends Controller
      */
     public function show($id)
     {
-        $user = user::find($id);
-        return $user;
-        //find Id
-        $findId = meals::find($id);
         return view('show', ['mealId' => $id ]);
     }
 

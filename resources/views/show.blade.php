@@ -19,8 +19,6 @@
             <input type="text" class="form-control" name="" id="">
         </div>
 
-
-
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 @endsection

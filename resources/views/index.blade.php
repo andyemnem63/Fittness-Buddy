@@ -8,8 +8,8 @@
         @if($userId === $meal->user_id)
             <ul class="list-group">
             <li class="list-group-item">
-                <a href="{{route('Meals.show', ['id' => $meal->id])}}">{{$meal->name}}</a>
-                {{$meal->id }}
+                <a href="{{route('Food.show', ['id' => $meal->id])}}">{{$meal->name}}</a>
+                Meal id: {{$meal->id}}
             </li>
         </ul>
         <br>

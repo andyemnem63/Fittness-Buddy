@@ -21,3 +21,5 @@ Route::resource('Meals', 'MealsController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::resource('/Food', 'FoodsController');
